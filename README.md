@@ -1,35 +1,35 @@
 
   # College carpool app
 
-Project Overview
+## Project Overview
 
 CampusPool is a full-stack carpooling platform designed to connect university students who want to share rides to and from campus. The app helps reduce carbon emissions, save money, and promote community connections among students.
 It includes both a React front-end and a Node.js (Express) back-end with JWT-based authentication and RESTful APIs.
   
-our teammate:
-Araceli：
+## our teammate:
+### Araceli：
 Front-End Developer
 Designed and implemented the React interface, routing, and component logic
 
-Ellie Hong:
+### Ellie Hong:
 Back-End Developer
 Implemented the Express.js API, tested endpoints, and integrated authentication
 
 Both teammate: Database / QA
 Supported data design, testing, and deployment setup
 
-Motivation
+### Motivation
 Many college students commute daily, often driving alone, which increases traffic congestion and environmental impact.
 CampusPool provides an easy way for students to share rides safely within the same campus community.
 
-Design
+### Design
 Front-End: React with responsive UI for desktop and mobile
 Back-End: Node.js (Express.js) using in-memory data for rapid prototyping
 Authentication: JSON Web Tokens (JWT)
 Communication: RESTful APIs connecting the front-end and back-end
 
-Repo Structure
-CampusPool/
+### Repo Structure
+``` CampusPool/
 │
 ├── src/
 │   ├── frontend/           # React front-end code
@@ -38,6 +38,7 @@ CampusPool/
 │
 ├── README.md               # Project documentation
 └── package.json            # Main dependency configuration
+```
 
 ## Installation & Setup
 Prerequisites
