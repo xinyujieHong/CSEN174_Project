@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # CampusPool Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: campuspool-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - JWT_SECRET=${JWT_SECRET}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); })"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # Optional: PostgreSQL Database (uncomment to use)
+  # db:
+  #   image: postgres:15-alpine
+  #   container_name: campuspool-db
+  #   environment:
+  #     - POSTGRES_USER=campuspool
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
+  #     - POSTGRES_DB=campuspool
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+  # Optional: Redis for session storage (uncomment to use)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: campuspool-redis
+  #   ports:
+  #     - "6379:6379"
+  #   restart: unless-stopped
+  #   command: redis-server --appendonly yes
+  #   volumes:
+  #     - redis_data:/data
+
+# volumes:
+#   postgres_data:
+#   redis_data:

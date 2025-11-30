@@ -1,0 +1,31 @@
+{
+  "name": "campuspool",
+  "version": "1.0.0",
+  "description": "College carpooling app with sleek red and white design",
+  "scripts": {
+    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "backend": "cd backend && npm start",
+    "backend:dev": "cd backend && npm run dev"
+  },
+  "keywords": ["carpooling", "college", "react", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "latest",
+    "sonner": "2.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/jest": "^29.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}
