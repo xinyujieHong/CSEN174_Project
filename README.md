@@ -118,7 +118,6 @@ STORAGE_MODE=memory   # or mysql
 
 ### 2.2 MySQL Options (when STORAGE_MODE=mysql)
 
-当 `STORAGE_MODE=mysql` 时，以下配置生效且必填：
 
 | Variable | Description | example |
 | :--- | :--- | :--- |
@@ -185,7 +184,7 @@ Restart the backend → data resets automatically.
 
 ### 4.2 MySQL Mode
 
-#### 方法 A：Option A — Reset entire database:
+#### Option A — Reset entire database:
 
 ```sql
 DROP DATABASE campuspool_db;
@@ -193,7 +192,7 @@ CREATE DATABASE campuspool_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 -- then restart src/backend/database/init.sql
 ```
 
-#### 方法 B：Clear tables:
+#### Option B：Clear tables:
 
 ```sql
 SET FOREIGN_KEY_CHECKS = 0;
