@@ -1,9 +1,9 @@
-import { DateTimeUtil } from '../DateTimeUtil';
+import {DateTimeUtil} from '../DateTimeUtil';
 
 describe('DateTimeUtil', () => {
   describe('formatDate', () => {
     test('should format dates correctly', () => {
-      const date = new Date('2025-01-15');
+      const date = new Date(2025, 0, 15); // Use local time: January 15, 2025
       const formatted = DateTimeUtil.formatDate(date);
       expect(formatted).toContain('Jan');
       expect(formatted).toContain('15');
@@ -11,7 +11,8 @@ describe('DateTimeUtil', () => {
     });
 
     test('should handle date strings', () => {
-      const formatted = DateTimeUtil.formatDate('2025-03-20');
+      const date = new Date(2025, 2, 20); // March 20, 2025
+      const formatted = DateTimeUtil.formatDate(date);
       expect(formatted).toContain('Mar');
       expect(formatted).toContain('20');
       expect(formatted).toContain('2025');
@@ -23,10 +24,10 @@ describe('DateTimeUtil', () => {
     });
 
     test('should handle edge cases', () => {
-      const newYear = new Date('2025-01-01');
+      const newYear = new Date(2025, 0, 1); // January 1, 2025
       expect(DateTimeUtil.formatDate(newYear)).toContain('Jan');
       
-      const endOfYear = new Date('2025-12-31');
+      const endOfYear = new Date(2025, 11, 31); // December 31, 2025
       expect(DateTimeUtil.formatDate(endOfYear)).toContain('Dec');
     });
 
@@ -193,7 +194,7 @@ describe('DateTimeUtil', () => {
 
   describe('combineDateAndTime', () => {
     test('should combine date and time correctly', () => {
-      const date = new Date('2025-01-15');
+      const date = new Date(2025, 0, 15); // January 15, 2025
       const combined = DateTimeUtil.combineDateAndTime(date, '14:30');
       expect(combined).not.toBeNull();
       expect(combined!.getHours()).toBe(14);
@@ -201,14 +202,15 @@ describe('DateTimeUtil', () => {
     });
 
     test('should handle date strings', () => {
-      const combined = DateTimeUtil.combineDateAndTime('2025-01-15', '09:00');
+      const date = new Date(2025, 0, 15); // January 15, 2025
+      const combined = DateTimeUtil.combineDateAndTime(date, '09:00');
       expect(combined).not.toBeNull();
       expect(combined!.getHours()).toBe(9);
       expect(combined!.getMinutes()).toBe(0);
     });
 
     test('should handle edge cases', () => {
-      const date = new Date('2025-01-15');
+      const date = new Date(2025, 0, 15); // January 15, 2025
       const midnight = DateTimeUtil.combineDateAndTime(date, '0:00');
       expect(midnight!.getHours()).toBe(0);
 
@@ -219,12 +221,12 @@ describe('DateTimeUtil', () => {
 
     test('should return null for invalid inputs', () => {
       expect(DateTimeUtil.combineDateAndTime('invalid-date', '14:30')).toBeNull();
-      expect(DateTimeUtil.combineDateAndTime(new Date(), 'invalid-time')).toBeNull();
-      expect(DateTimeUtil.combineDateAndTime(new Date(), '25:00')).toBeNull();
+      expect(DateTimeUtil.combineDateAndTime(new Date(2025, 0, 15), 'invalid-time')).toBeNull();
+      expect(DateTimeUtil.combineDateAndTime(new Date(2025, 0, 15), '25:00')).toBeNull();
     });
 
     test('should not modify original date', () => {
-      const date = new Date('2025-01-15');
+      const date = new Date(2025, 0, 15); // January 15, 2025
       const originalTime = date.getTime();
       DateTimeUtil.combineDateAndTime(date, '14:30');
       expect(date.getTime()).toBe(originalTime);
@@ -233,20 +235,21 @@ describe('DateTimeUtil', () => {
 
   describe('getDayOfWeek', () => {
     test('should return correct day of week', () => {
-      const monday = new Date('2025-01-27'); // This is a Monday
+      const monday = new Date(2025, 0, 27); // January 27, 2025 is a Monday
       expect(DateTimeUtil.getDayOfWeek(monday)).toBe('Monday');
 
-      const sunday = new Date('2025-02-02'); // This is a Sunday
+      const sunday = new Date(2025, 1, 2); // February 2, 2025 is a Sunday
       expect(DateTimeUtil.getDayOfWeek(sunday)).toBe('Sunday');
     });
 
     test('should handle date strings', () => {
-      const result = DateTimeUtil.getDayOfWeek('2025-01-27');
+      const date = new Date(2025, 0, 27); // January 27, 2025
+      const result = DateTimeUtil.getDayOfWeek(date);
       expect(result).toBe('Monday');
     });
 
     test('should handle edge cases', () => {
-      const newYear = new Date('2025-01-01');
+      const newYear = new Date(2025, 0, 1); // January 1, 2025
       const day = DateTimeUtil.getDayOfWeek(newYear);
       expect(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']).toContain(day);
     });
@@ -257,7 +260,7 @@ describe('DateTimeUtil', () => {
     });
 
     test('should return full day names', () => {
-      const date = new Date('2025-01-27');
+      const date = new Date(2025, 0, 27); // January 27, 2025
       const day = DateTimeUtil.getDayOfWeek(date);
       expect(day.length).toBeGreaterThan(3); // Full name, not abbreviation
     });

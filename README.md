@@ -206,7 +206,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ## 5. Common Errors & Fixes
 
-*   **Error：`Error: connect ECONNREFUSED`**
+*   **Error：`Error: connect ECONNREF
+USED`**
     *   MySQL is not running
     *   Wrong DB_HOST / DB_PORT
 
