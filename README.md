@@ -37,15 +37,103 @@ Supports Memory Mode & MySQL Mode
 ```
 
 ### Repo Structure
-``` CampusPool/
-│
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Frontend                            │
+│                  React + TypeScript                          │
+│                  http://localhost:3000                       │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  main page component                                 │   │
+│  │  - LoginPage.tsx                                     │   │
+│  │  - SignupPage.tsx                                    │   │
+│  │  - ProfileSetupPage.tsx                              │   │
+│  │  - FeedPage.tsx                                      │   │
+│  │  - MessagesPage.tsx                                  │   │
+│  │  - ProfilePage.tsx                                   │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Utils                                               │   │
+│  │  - api/client.ts                                      │   │
+│  │  - config.ts                                          │   │
+│  │  - validators/                                        │   │
+│  └──────────────────────────────────────────────────────┘   │
+└────────────────────┬─────────────────────────────────────────┘
+                     │
+                     │ HTTP REST API (JSON)
+                     │ Authorization: Bearer <JWT Token>
+                     │
+┌────────────────────▼─────────────────────────────────────────┐
+│                        Backend                               │
+│                    Express.js                                │
+│                  http://localhost:3001                       │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  server.js                                           │   │
+│  │  - Routes                                            │   │
+│  │  - Middleware                                         │   │
+│  │  - JWT certification                                   │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  dataStore.js                                      │   │
+│  │  - Users                                    │   │
+│  │  - Profiles                                 │   │
+│  │  - arpool Requests                         │   │
+│  │  - Conversations                                │   │
+│  │  - Messages                                     │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  current storage: Mysql                          │   │
+│  │     data will be stored when restart                  │   │
+│  └──────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## project structure
+
+```
+C-carpool/
 ├── src/
-│   ├── frontend/           # React front-end code
-│   ├── backend/            # Express.js backend (server.js, dataStore.js)
-│   └── tests/              # Pytest / API test scripts (optional)
+│   ├── App.tsx                    
+│   ├── main.tsx                  
+│   ├── index.css                  
+│   │
+│   ├── components/                
+│   │   ├── LoginPage.tsx          
+│   │   ├── SignupPage.tsx         
+│   │   ├── ProfileSetupPage.tsx   
+│   │   ├── FeedPage.tsx           
+│   │   ├── MessagesPage.tsx       
+│   │   ├── ProfilePage.tsx        
+│   │   └── ui/                    
+│   │
+│   ├── utils/                     
+│   │   ├── api/
+│   │   │   └── client.ts          
+│   │   ├── config.ts              
+│   │   ├── CarpoolRequestValidator.ts
+│   │   ├── ProfileValidator.ts
+│   │   ├── UserValidator.ts
+│   │   ├── DateTimeUtil.ts
+│   │   └── MessageHandler.ts
+│   │
+│   └── backend/                  
+│       ├── server.js              
+│       ├── dataStore.js          
+│       ├── package.json           
+│       ├── API.md                 
+│       ├── ARCHITECTURE.md        
+│       └── SETUP.md               
 │
-├── README.md               # Project documentation
-└── package.json            # Main dependency configuration
+├── doc/                          
+├── package.json               
+├── vite.config.ts               
+└── index.html                  
 ```
 
 ## Installation & Setup
